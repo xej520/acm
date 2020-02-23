@@ -25,6 +25,10 @@ func sortBySmall(a, b int) bool {
 	return a > b
 }
 
+// 如果按照从大到小排序
+// 那么，相邻两个数(前后两个数)交换的条件是
+// 前面的数，小于了， 后面的数，
+// 需要进行交换了
 func sortByBig(a, b int) bool {
 	return a < b
 }
