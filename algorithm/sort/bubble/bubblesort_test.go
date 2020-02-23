@@ -39,5 +39,5 @@ func Benchmark_SortByMin2(b *testing.B) {
 	}
 
 	b.StopTimer()
-	print(arr)
+	//print(arr)
 }

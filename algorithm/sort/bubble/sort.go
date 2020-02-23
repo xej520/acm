@@ -24,18 +24,6 @@ func sortByMax(arr []int) []int {
 	return arr
 }
 
-// 利用Go的多重赋值特性，可以很简单的完成两个变量的交换
-func sortByMax2(arr []int) []int {
-	for i := 0; i < len(arr)-1; i++ {
-		for j := len(arr) - 1; j > i; j-- {
-			if arr[j-1] < arr[j] {
-				arr[j], arr[j-1] = arr[j-1], arr[j]
-			}
-		}
-	}
-
-	return arr
-}
 
 func sortByMin(arr []int) []int {
 
@@ -51,6 +39,24 @@ func sortByMin(arr []int) []int {
 
 	return arr
 }
+
+
+
+
+// 利用Go的多重赋值特性，可以很简单的完成两个变量的交换
+func sortByMax2(arr []int) []int {
+	for i := 0; i < len(arr)-1; i++ {
+		for j := len(arr) - 1; j > i; j-- {
+			if arr[j-1] < arr[j] {
+				arr[j], arr[j-1] = arr[j-1], arr[j]
+			}
+		}
+	}
+
+	return arr
+}
+
+
 
 func sortByMin2(arr []int) []int {
 	for i := 0; i < len(arr)-1; i++ {
