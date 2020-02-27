@@ -103,7 +103,7 @@ func exeQuickSort(datas []int, leftIndex, rightIndex int) {
 		return
 	}
 
-	pivot := partion(datas, leftIndex, rightIndex)
+	pivot := partition(datas, leftIndex, rightIndex)
 
 	// 根据转轴的下标，来递归调用是左分区，还是右分区
 	exeQuickSort(datas, pivot+1, rightIndex)
@@ -111,7 +111,7 @@ func exeQuickSort(datas []int, leftIndex, rightIndex int) {
 	exeQuickSort(datas, leftIndex, pivot-1)
 }
 
-func partion(datas []int, leftIndex, rightIndex int) int {
+func partition(datas []int, leftIndex, rightIndex int) int {
 	// 设置转轴下标
 	pivotIndex := (leftIndex + rightIndex) / 2
 	pivot := datas[pivotIndex]
