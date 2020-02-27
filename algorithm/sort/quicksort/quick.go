@@ -120,10 +120,10 @@ func partition(datas []int, leftIndex, rightIndex int) int {
 
 	// 找出转轴的下标是多少
 	for l < r {
-		for ; l < pivotIndex; l++ {
-			if pivot < datas[l] {
-				break
-			}
+
+		// 从左往右查询
+		for l < pivotIndex &&  datas[l] < pivot {
+			l++
 		}
 
 		for ; r > pivotIndex; r-- {
