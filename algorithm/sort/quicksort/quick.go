@@ -112,42 +112,43 @@ func exeQuickSort(datas []int, leftIndex, rightIndex int) {
 }
 
 func partion(datas []int, leftIndex, rightIndex int) int {
-	// 设置中心点
-	pivot := (leftIndex + rightIndex) / 2
+	// 设置转轴下标
+	pivotIndex := (leftIndex + rightIndex) / 2
+	pivot := datas[pivotIndex]
 	// 设置两个向右移动和向左移动r的变量， l,r
 	l, r := leftIndex, rightIndex
 
 	// 找出转轴的下标是多少
 	for l < r {
-		for ; l < pivot; l++ {
-			if datas[pivot] < datas[l] {
+		for ; l < pivotIndex; l++ {
+			if pivot < datas[l] {
 				break
 			}
 		}
 
-		for ; r > pivot; r-- {
-			if datas[pivot] > datas[r] {
+		for ; r > pivotIndex; r-- {
+			if pivot > datas[r] {
 				break
 			}
 		}
 
-		if l < pivot && pivot < r {
+		if l < pivotIndex && pivotIndex < r {
 			datas[l], datas[r] = datas[r], datas[l]
 			l++
 			r--
 		}
 
 		// 针对的是情况下，左边移动到转轴了，而右边还没有移动到转轴位置
-		if l == pivot && pivot < r && datas[pivot] > datas[r] {
-			datas[pivot], datas[r] = datas[r], datas[pivot]
-			pivot = r
+		if l == pivotIndex && pivotIndex < r && pivot > datas[r] {
+			pivot, datas[r] = datas[r], pivot
+			pivotIndex = r
 			l++
 		}
 
 		// 针对的情况是，左边还没有移动到转轴位置，而右边r已经移动到了转轴位置了
-		if r == pivot && l < pivot && datas[pivot] < datas[l] {
-			datas[pivot], datas[l] = datas[l], datas[pivot]
-			pivot = l
+		if r == pivotIndex && l < pivotIndex && pivot < datas[l] {
+			pivot, datas[l] = datas[l], pivot
+			pivotIndex = l
 			r--
 		}
 
