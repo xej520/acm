@@ -91,13 +91,13 @@ func exeQuickSort(datas []int, leftIndex, rightIndex int) {
 		return
 	}
 
-	if rightIndex-leftIndex == 1 {
-		if datas[leftIndex] > datas[rightIndex] {
-			datas[leftIndex], datas[rightIndex] = datas[rightIndex], datas[leftIndex]
-		}
+	//针对，只对datas中的两个数，进行排序
+	if rightIndex-leftIndex == 1 && datas[leftIndex] > datas[rightIndex] {
+		datas[leftIndex], datas[rightIndex] = datas[rightIndex], datas[leftIndex]
 		return
 	}
 
+	// 只对datas中的三个数，进行排序
 	if rightIndex-leftIndex == 2 {
 		compareForThree(datas, leftIndex, rightIndex)
 		return
@@ -122,7 +122,7 @@ func partition(datas []int, leftIndex, rightIndex int) int {
 	for l < r {
 
 		// 从左往右查询
-		for l < pivotIndex &&  datas[l] < pivot {
+		for l < pivotIndex && datas[l] < pivot {
 			l++
 		}
 
@@ -161,4 +161,3 @@ func partition(datas []int, leftIndex, rightIndex int) int {
 
 	return l
 }
-
