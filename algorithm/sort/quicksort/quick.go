@@ -2,7 +2,8 @@ package quicksort
 
 func quickSort(data []int) {
 
-	subQuickSort(data, 0, len(data)-1)
+	//subQuickSort(data, 0, len(data)-1)
+	exeQuickSort(data, 0, len(data)-1)
 }
 
 func subQuickSort(data []int, l, r int) {
@@ -80,4 +81,76 @@ func compareForThree(datas []int, i, j int) {
 	if datas[i+1] > datas[j] {
 		datas[i+1], datas[j] = datas[j], datas[i+1]
 	}
+}
+
+// 为什么要设置左右界限呢？leftIndex, rightIndex?
+// 因为我们是对同一个数据源的不同区间，进行操作的；
+func exeQuickSort(datas []int, leftIndex, rightIndex int) {
+
+	if leftIndex > rightIndex {
+		return
+	}
+
+	if rightIndex-leftIndex == 1 {
+		if datas[leftIndex] > datas[rightIndex] {
+			datas[leftIndex], datas[rightIndex] = datas[rightIndex], datas[leftIndex]
+		}
+		return
+	}
+
+	if rightIndex-leftIndex == 2 {
+		compareForThree(datas, leftIndex, rightIndex)
+		return
+	}
+
+	// 设置中心点
+	pivot := (leftIndex + rightIndex) / 2
+	// 设置两个向右移动和向左移动r的变量， l,r
+	l, r := leftIndex, rightIndex
+
+	// 找出转轴的下标是多少
+	for l < r {
+		for ; l < pivot; l++ {
+			if datas[pivot] < datas[l] {
+				break
+			}
+		}
+
+		for ; r > pivot; r-- {
+			if datas[pivot] > datas[r] {
+				break
+			}
+		}
+
+		if l < pivot && pivot < r {
+			datas[l], datas[r] = datas[r], datas[l]
+			l++
+			r--
+		}
+
+		// 针对的是情况下，左边移动到转轴了，而右边还没有移动到转轴位置
+		if l == pivot && pivot < r && datas[pivot] > datas[r] {
+			datas[pivot], datas[r] = datas[r], datas[pivot]
+			pivot = r
+			l++
+		}
+
+		// 针对的情况是，左边还没有移动到转轴位置，而右边r已经移动到了转轴位置了
+		if r == pivot && l < pivot && datas[pivot] < datas[l] {
+			datas[pivot], datas[l] = datas[l], datas[pivot]
+			pivot = l
+			r--
+		}
+
+		// 当两个相遇时，也就是在转轴位置相遇了，就结束
+		if l == r {
+			break
+		}
+
+	}
+
+	// 根据转轴的下标，来递归调用是左分区，还是右分区
+	exeQuickSort(datas, pivot+1, rightIndex)
+
+	exeQuickSort(datas, leftIndex, pivot-1)
 }
