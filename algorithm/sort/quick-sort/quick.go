@@ -2,8 +2,8 @@ package quicksort
 
 func quickSort(data []int) {
 
-	//subQuickSort(data, 0, len(data)-1)
-	exeQuickSort(data, 0, len(data)-1)
+	subQuickSort(data, 0, len(data)-1)
+	//exeQuickSort(data, 0, len(data)-1)
 }
 
 func subQuickSort(data []int, l, r int) {
