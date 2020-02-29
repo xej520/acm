@@ -16,7 +16,7 @@ func subInsertionSort(data []int, insertIndex int) {
 	}
 
 	// 将元素data[insertIndex]已经插入到inserIndex前面了
-	nexInsertIndex = frontSort(data, insertIndex)
+	nexInsertIndex := frontSort(data, insertIndex)
 
 	// 对剩下的元素，继续插入
 	subInsertionSort(data, nexInsertIndex)
