@@ -91,7 +91,7 @@ func exeQuickSort(datas []int, leftIndex, rightIndex int) {
 		return
 	}
 
-	//针对，只对datas中的两个数，进行排序
+	// 只对datas中的两个数，进行排序
 	if rightIndex-leftIndex == 1 && datas[leftIndex] > datas[rightIndex] {
 		datas[leftIndex], datas[rightIndex] = datas[rightIndex], datas[leftIndex]
 		return
