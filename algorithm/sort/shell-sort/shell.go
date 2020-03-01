@@ -1,7 +1,7 @@
 package shell_sort
 
 func ShellSort(data []int) {
-
+	subShellSort(data, len(data) / 2)
 }
 
 func subShellSort(data []int, interval int) {
