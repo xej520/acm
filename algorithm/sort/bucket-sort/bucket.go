@@ -1,9 +1,5 @@
 package bucket_sort
 
-import (
-	"fmt"
-)
-
 var bucketScope = 10
 
 type SortFunc func([]int)
@@ -14,11 +10,10 @@ func BucketSort(data []int) {
 	bucket := newBucket(computerBucketNum(data, bucketScope))
 
 	data2bucket(data, bucket)
-	fmt.Println("--------------111------------")
+
 	sortForBucket(bucket, sortFuncSlice)
 
 	bucket2data(bucket, data)
-	fmt.Println("--------------123------------")
 }
 
 func computerBucketNum(data []int, bucketScope int) int {
@@ -40,7 +35,6 @@ func data2bucket(data []int, bucket map[int][]int) {
 	for i := 0; i < len(data); i++ {
 		// 判断data[i] 存储到 哪个桶里
 		index := data[i] / bucketScope
-		fmt.Printf("桶号:\t%d, 值:\t%d\n", index, data[i])
 		bucket[index] = append(bucket[index], data[i])
 	}
 }
@@ -62,7 +56,6 @@ func bucket2data(bucket map[int][]int, data []int) {
 		slice := bucket[i]
 		if len(slice) != 0 {
 			for j := 0; j < len(slice); j++ {
-				fmt.Printf("===%d===桶内数据:\t%d\n", j, slice[j])
 				data[index] = slice[j]
 				index++
 			}
@@ -121,13 +114,11 @@ func countingSort(data []int) {
 	for i := 0; i < len(data); i++ {
 		temp[data[i]]++
 	}
-	fmt.Println("--------------2------------")
 	var index int
 	for i := min; i < len(temp); i++ {
 		for j := temp[i]; j > 0; j-- {
 			data[index] = i
 			index++
-			fmt.Println("--------------2-1-----------")
 		}
 	}
 }
