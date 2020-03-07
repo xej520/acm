@@ -2,7 +2,6 @@ package radix_sort
 
 import (
 	"math"
-	"fmt"
 )
 
 type sortFunc func([]int)
@@ -10,7 +9,6 @@ type sortFunc func([]int)
 func RadixSort(data []int) {
 	// 1、求出数据中，最长位数是多少
 	ml := maxLength(data)
-	fmt.Println("maxlength:\t", ml)
 
 	// 2、根据最长位数，生成一组桶
 	b := newBucket(ml)
